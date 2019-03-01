@@ -5,3 +5,7 @@
 
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+actions" | egrep "\-p[[:space:]]+wa" \
   | egrep -q "\-w[[:space:]]+\/var\/log\/sudo.log" || exit 1
+
+#Testing the /etc/audit/rules.d/audit.rules file.
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+actions" | egrep "\-p[[:space:]]+wa" \
+  | egrep -q "\-w[[:space:]]+\/var\/log\/sudo.log" || exit 1

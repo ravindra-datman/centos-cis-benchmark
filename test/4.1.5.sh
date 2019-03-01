@@ -9,3 +9,10 @@ cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/gshadow" || exit 1
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/shadow" || exit 1
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/security\/opasswd" || exit 1
+
+#Testing /etc/audit/rules.d/audit.rules file
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/group" || exit 1
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/passwd" || exit 1
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/gshadow" || exit 1
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/shadow" || exit 1
+cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+identity" | egrep "\-p[[:space:]]+wa" | egrep -q "\-w[[:space:]]+\/etc\/security\/opasswd" || exit 1
