@@ -5,4 +5,4 @@
 
 cat /etc/securetty
 
-exit 1
+return 1

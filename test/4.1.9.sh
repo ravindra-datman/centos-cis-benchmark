@@ -4,16 +4,16 @@
 # 4.1.9 - Ensure session initiation information is collected (Scored)
 
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+session" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/run\/utmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/run\/utmp" || return 1
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+logins" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/log\/wtmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/log\/wtmp" || return 1
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+logins" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/log\/btmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/log\/btmp" || return 1
 
 #Testing the /etc/audit/rules.d/audit.rules file
 cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+session" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/run\/utmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/run\/utmp" || return 1
 cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+logins" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/log\/wtmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/log\/wtmp" || return 1
 cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+logins" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/var\/log\/btmp" || exit 1
+  | egrep -q "\-w[[:space:]]+\/var\/log\/btmp" || return 1

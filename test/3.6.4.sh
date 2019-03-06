@@ -5,4 +5,4 @@
 
 iptables -L -v -n
 
-exit 1
+return 1

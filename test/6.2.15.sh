@@ -9,6 +9,6 @@ for i in $(cut -s -d: -f4 /etc/passwd | sort -u ); do
       if [[ $1 -ne '' ]] ; then
          echo "Group $i is referenced by /etc/passwd but does not exist in /etc/group"
       fi
-      exit 1
+      return 1
    fi
 done

@@ -5,4 +5,4 @@
 
 perm=$(grep ^options /etc/syslog-ng/syslog-ng.conf | sed "s/^.* perm\(([0-9]*)\).*$/\1/" | sed "s/[^0-9]//g")
 
-[[ "$perm" =~ 0[0-6][0-4]0$ ]] || exit;
+[[ "$perm" =~ 0[0-6][0-4]0$ ]] || return;

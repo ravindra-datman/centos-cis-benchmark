@@ -10,6 +10,6 @@ cat /etc/passwd | cut -f3 -d":" | sort -n | uniq -c | while read x ; do
       if [[ $1 -ne '' ]] ; then
          echo "Duplicate UID ($2): ${users}"
       fi
-      exit 1
+      return 1
    fi
 done

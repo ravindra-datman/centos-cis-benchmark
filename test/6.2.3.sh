@@ -5,10 +5,10 @@
 
 if [[ -r /etc/shadow ]]; then
    if [[ $(grep '^\+:' /etc/shadow) -eq '' ]] ; then
-      exit 0
+      return 0
    else
-      exit 1
+      return 1
    fi
 else
-   exit 1
+   return 1
 fi

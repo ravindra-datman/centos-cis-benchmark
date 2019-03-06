@@ -7,12 +7,12 @@
 for port in $(netstat -lnt |grep ^tcp | grep LISTEN | awk {'print $4'} | cut -d":" -f2); do
         echo open tcp port $port
 
-        iptables -L INPUT -v -n | grep "ACCEPT\s*tcp.*:$port" || exit $?
+        iptables -L INPUT -v -n | grep "ACCEPT\s*tcp.*:$port" || return $?
 done
 
 # udp
 for port in $(netstat -lnt |grep ^udp | grep LISTEN | awk {'print $4'} | cut -d":" -f2); do
         echo open udp port $port
 
-        iptables -L INPUT -v -n | grep "ACCEPT\s*udp.*:$port" || exit $?
+        iptables -L INPUT -v -n | grep "ACCEPT\s*udp.*:$port" || return $?
 done

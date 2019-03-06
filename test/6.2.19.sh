@@ -11,6 +11,6 @@ cat /etc/group | cut -f1 -d":" | sort -n | uniq -c | while read x ; do
          gids=`gawk -F: '($1 == n) { print $3 }' n=$2 /etc/group | xargs`
          echo "Duplicate Group Name ($2): ${gids}"
       fi
-      exit 1
+      return 1
    fi
 done

@@ -10,6 +10,6 @@ for i in $(egrep ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1 ); do
 
         if [[ $EPOCH -gt $NOW ]]; then
                 echo Password change in future - $i - $UPA
-                exit 1
+                return 1
         fi
 done

@@ -10,6 +10,6 @@ cat /etc/group | cut -f3 -d":" | sort -n | uniq -c | while read x ; do
       if [[ $1 -ne '' ]] ; then
          echo "Duplicate GID ($2): ${groups}"
       fi
-      exit 1
+      return 1
    fi
 done

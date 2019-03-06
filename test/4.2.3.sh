@@ -9,5 +9,5 @@ rpm -q syslog-ng | grep -E "^syslog-ng-"
 app2=$?
 
 if [[ $app1 -eq 1 && $app2 -eq 1 ]]; then
-        exit 1
+        return 1
 fi

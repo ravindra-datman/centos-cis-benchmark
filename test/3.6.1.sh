@@ -3,4 +3,4 @@
 
 # 3.6.1 - Ensure iptables is installed (Scored)
 
-rpm -q iptables |grep -E "iptables-" || exit $?
+rpm -q iptables |grep -E "iptables-" || return $?

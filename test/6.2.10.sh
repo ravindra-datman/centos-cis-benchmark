@@ -11,13 +11,13 @@ cat /etc/passwd | egrep -v '^(root|halt|sync|shutdown)' | awk -F: '($7 != "/sbin
                if [[ $1 -ne '' ]] ; then
                   echo "Group Write permission set on file $file"
                fi
-            exit 1
+            return 1
          fi
          if [ `echo $fileperm | cut -c9` != "-" ]; then
             if [[ $1 -ne '' ]] ; then
                echo "Other Write permission set on file $file"
             fi
-            exit 1
+            return 1
          fi
       fi
    done

@@ -4,8 +4,8 @@
 # 4.1.15 - Ensure changes to system administration scope (sudoers) is collected (Scored)
 
 cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+scope" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/etc\/sudoers" || exit 1
+  | egrep -q "\-w[[:space:]]+\/etc\/sudoers" || return 1
 
 #Testing the /etc/audit/rules.d/audit.rules file
 cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+scope" | egrep "\-p[[:space:]]+wa" \
-  | egrep -q "\-w[[:space:]]+\/etc\/sudoers" || exit 1
+  | egrep -q "\-w[[:space:]]+\/etc\/sudoers" || return 1

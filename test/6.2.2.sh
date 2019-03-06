@@ -5,10 +5,10 @@
 
 if [[ -r /etc/passwd ]]; then
    if [[ $(grep '^\+:' /etc/passwd) -eq '' ]] ; then
-      exit 0
+      return 0
    else
-      exit 1
+      return 1
    fi
 else
-      exit 1
+      return 1
 fi

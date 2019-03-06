@@ -4,5 +4,5 @@
 # 2.1.9 - Ensure tftp server is not enabled (Scored)
 
 out=$(chkconfig --list | grep -E "^(tftp)\s" |grep ":on")
-[[ -z "${out}" ]] || exit 1
+[[ -z "${out}" ]] || return 1
 
