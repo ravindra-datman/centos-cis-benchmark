@@ -2,7 +2,9 @@
 # ** AUTO GENERATED **
 
 # 4.2.2.2 - Ensure logging is configured (Not Scored)
-
+# 4.2.2.2 "Ensure logging is configured (Not Scored)" No Server1 Workstation1
+ 
+execute(){
 grep "log { source(src); source(chroots); filter(f_console); destination(console); };" /etc/syslog-ng/syslog-ng.conf || return 1
 grep "log { source(src); source(chroots); filter(f_console); destination(xconsole); };" /etc/syslog-ng/syslog-ng.conf || return 1
 grep "log { source(src); source(chroots); filter(f_newscrit); destination(newscrit); };" /etc/syslog-ng/syslog-ng.conf || return 1
@@ -20,3 +22,9 @@ grep "log { source(src); source(chroots); filter(f_local); destination(localmess
 grep "log { source(src); source(chroots); filter(f_messages); destination(messages); };" /etc/syslog-ng/syslog-ng.conf || return 1
 grep "log { source(src); source(chroots); filter(f_iptables); destination(firewall); };" /etc/syslog-ng/syslog-ng.conf || return 1
 grep "log { source(src); source(chroots); filter(f_warn); destination(warn); };" /etc/syslog-ng/syslog-ng.conf || return 1
+}
+test_serial_number="4.2.2.2"
+test_name="Ensure logging is configured (Not Scored)"
+scored="No"
+server="Server1"
+workstation="Workstation1"

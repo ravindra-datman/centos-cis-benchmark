@@ -2,8 +2,10 @@
 # ** AUTO GENERATED **
 
 # 4.2.1.2 - Ensure logging is configured (Not Scored)
-
-grep "\*.emerg\s*:omusrmsg:\*" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
+#4.2.1.2 "Ensure logging is configured (Not Scored)" No Server1 Workstation1
+ 
+execute(){
+gre "\*.emerg\s*:omusrmsg:\*" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
 grep "mail.\*\s*-/var/log/mail" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
 grep "mail.info\s*-/var/log/mail.info" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
 grep "mail.warning\s*-/var/log/mail.warn" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
@@ -18,3 +20,9 @@ grep "local0,local1.\*\s*-/var/log/localmessages" /etc/rsyslog.conf /etc/rsyslog
 grep "local2,local3.\*\s*-/var/log/localmessages" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
 grep "local4,local5.\*\s*-/var/log/localmessages" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
 grep "local6,local7.\*\s*-/var/log/localmessages" /etc/rsyslog.conf /etc/rsyslog.d/*.conf || return 1
+}
+test_serial_number="4.2.1.2"
+test_name="Ensure logging is configured (Not Scored)"
+scored="No"
+server="Server1"
+workstation="Workstation1"

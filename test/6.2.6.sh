@@ -2,7 +2,9 @@
 # ** AUTO GENERATED **
 
 # 6.2.6 - Ensure root PATH Integrity (Scored)
+#6.2.6 "Ensure root PATH Integrity (Scored)" Yes Server1 Workstation1
 
+execute(){
 export debug=$1
 
 if [ "`echo $PATH | grep ::`" != "" ]; then
@@ -58,3 +60,9 @@ while [ "$1" != "" ]; do
    fi	
    shift
 done
+}
+test_serial_number="6.2.6"
+test_name="Ensure root PATH Integrity (Scored)"
+scored="Yes"
+server="Server1"
+workstation="Workstation1"

@@ -2,7 +2,9 @@
 # ** AUTO GENERATED **
 
 # 5.4.1.4 - Ensure inactive password lock is 30 days or less (Scored)
+# 5.4.1.4 "Ensure inactive password lock is 30 days or less (Scored)" Yes Server1 Workstation1
 
+execute(){
 INA=$(useradd -D | grep INACTIVE | cut -d= -f2)
 echo Inactive is $INA
 
@@ -18,3 +20,9 @@ for i in $(egrep ^[^:]+:[^\!*] /etc/shadow | cut -d: -f1 ); do
                 return 1
         fi
 done
+}
+test_serial_number="5.4.1.4"
+test_name="Ensure inactive password lock is 30 days or less (Scored)"
+scored="Yes"
+server="Server1"
+workstation="Workstation1"
