@@ -2,26 +2,40 @@
 
 test_filter() {
 	#The function below takes two arguments, the first is the user input test specification, and the second is the serial number for the test.  The serial number is then run against one or both of two text files that sees if the serial number is listed as an unscored test or a unimportant scored test.  If the serial number is found, the function returns a 1, indicating that the test should not be run, if a zero is returned, then the test is given the green light to be run. 
-	if [[ $1 == "Scored_Only" || $1 == "Important_Scored_Only" ]]; then
-		while read -r line; do
-			if [[ $2 == $line ]]; then
-				echo 1
-			fi
-		done < "unscored_tests.txt"
-		if [[ $1 == "Scored_Only" ]]; then
+
+	local test = $1
+	shift
+	local scored = $1
+	shift
+	local important = $1
+	if [[ $test == "Scored_Only" || $test == "Important_Scored_Only" ]]; then
+		if [[ $test == "Scored_Only" && $scored == "Yes" ]]; then
 			echo 0
 		fi
-		if [[ $1 == "Important_Scored_Only" ]]; then	
-			while read -r line; do
-				if [[ $2 == $line ]]; then
-					echo 1
-				fi
-			done < "unimportant_scored_tests.txt"
+        	if [[ $test == "Important_SCored_Only" && $scored =="Yes" && $important == "Yes" ]]; then
 			echo 0
-		fi       
-	else
-		echo 0
+		fi
 	fi
+	echo 1
+#		while read -r line; do
+#			if [[ $2 == $line ]]; then
+#				echo 1
+#			fi
+#		done < "unscored_tests.txt"
+#		if [[ $1 == "Scored_Only" ]]; then
+#			echo 0
+#		fi
+#		if [[ $1 == "Important_Scored_Only" ]]; then	
+#			while read -r line; do
+#				if [[ $2 == $line ]]; then
+#					echo 1
+#				fi
+#			done < "unimportant_scored_tests.txt"
+#			echo 0
+#		fi       
+#	else
+#		echo 0
+#	fi
 }
 
 test_wrapper() {
@@ -69,7 +83,7 @@ test_wrapper() {
 		fi
 	fi
 
-#	if [[ -f ./test/${ref}.sh ]]; then
+	if [[ -f ./test/${ref}.sh ]]; then
 #	if [[ -f execute ]]; then
 #		bash ./test/${ref}.sh ${args} > /dev/null 2>/dev/null
                 execute ${args} > /dev/null 2>/dev/null
@@ -107,9 +121,9 @@ test_wrapper() {
 		else
 			echo -e "${RED}FAIL${NC} - $ref - ${msg}"
 		fi
-#	else
-#		echo -e "${YELLOW}SKIP${NC} - $ref - ${msg}"
-#	fi
+	else
+		echo -e "${YELLOW}SKIP${NC} - $ref - ${msg}"
+	fi
 }
 
 if [[ $(whoami) != "root" ]]; then
@@ -128,15 +142,15 @@ if [[ $test != "Scored_Only" && $test != "Important_Scored_Only" && $test != "" 
 fi
 
 
-  for i in test/test/*.sh; do
+  for i in test/*.sh; do
     if [[ `basename $i` == `basename $0` ]]; then
       continue
     fi
 
-    echo Including test file $i
+#    echo Including test file $i
     source ./$i
 
-    if [[ $(test_filter $test $test_serial_number)==0 ]]; then
+    if [[ $(test_filter $test $scored $important)==0 ]]; then
 	test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
     fi
     
@@ -150,30 +164,6 @@ fi
  #     echo PASS
  #   fi
   done
-
-
-
-
-#while read -r line; do
-#if [[ $(test_filter $test ) == 0 ]]; then 
-#	IFS=' ' read -ra parsed_line <<< "$line"
-#        test_line=""
-#        strlen=${#parsed_line[@]}
-#       echo "Length: $strlen"
-#	index=0
-#	while [ $index -lt $strlen ]; do
-#		echo "i = $i"
-#		if [[ $i>0 && $i<${strlen-3} ]]; then
-#			echo "Adding: $parsed_line[i]"	
-#		 	test_line="$test_line paresed_line[i]"
-#		fi
-#		((index++))
-#	done
-#	echo "Test line: $test_line"
-#       test_wrapper  parsed_line[0] test_line parsed_line[strlen -3] parsed_line[strlen -2] parsed_line[strlen-1]
-#fi
-#done < "test-info.txt"
-
 
 echo
 echo Results
