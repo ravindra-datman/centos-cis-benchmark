@@ -7,13 +7,13 @@
 execute(){
 priv_cmds="$(find / -xdev \( -perm -4000 -o -perm -2000 \) -type f)"
 for cmd in ${priv_cmds} ; do
-        cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+privileged" | egrep "\-F[[:space:]]+path=${cmd}" | egrep "\-F[[:space:]]+perm=x" | egrep "\-F[[:space:]]+auid>=1000" | egrep "\-F[[:space:]]+auid\!=4294967295" | egrep -q "\-a[[:space:]]+always,return|\-a[[:space:]]+return,always" || return 1
+        cut -d\# -f1 /etc/audit/audit.rules | egrep "\-k[[:space:]]+privileged" | egrep "\-F[[:space:]]+path=${cmd}" | egrep "\-F[[:space:]]+perm=x" | egrep "\-F[[:space:]]+auid>=1000" | egrep "\-F[[:space:]]+auid\!=4294967295" | egrep -q "\-a[[:space:]]+always,exit|\-a[[:space:]]+exit,always" || return 1
 done
 
 #Testing the /etc/audit/rules.d/audit.rules file
 priv_cmds="$(find / -xdev \( -perm -4000 -o -perm -2000 \) -type f)"
 for cmd in ${priv_cmds} ; do
-        cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+privileged" | egrep "\-F[[:space:]]+path=${cmd}" | egrep "\-F[[:space:]]+perm=x" | egrep "\-F[[:space:]]+auid>=1000" | egrep "\-F[[:space:]]+auid\!=4294967295" | egrep -q "\-a[[:space:]]+always,return|\-a[[:space:]]+return,always" || return 1
+        cut -d\# -f1 /etc/audit/rules.d/audit.rules | egrep "\-k[[:space:]]+privileged" | egrep "\-F[[:space:]]+path=${cmd}" | egrep "\-F[[:space:]]+perm=x" | egrep "\-F[[:space:]]+auid>=1000" | egrep "\-F[[:space:]]+auid\!=4294967295" | egrep -q "\-a[[:space:]]+always,exit|\-a[[:space:]]+exit,always" || return 1
 done
 }
 test_serial_number="4.1.12"
