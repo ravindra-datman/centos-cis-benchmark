@@ -37,3 +37,4 @@ test_name="Ensure events that modify the system's network environment are collec
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

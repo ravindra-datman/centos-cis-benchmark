@@ -12,4 +12,4 @@ test_name="Ensure nodev option set on /tmp partition (Scored)"
 scored="Yes"
 server="Server1"
 workstation="Workstation1"
-
+important="No"

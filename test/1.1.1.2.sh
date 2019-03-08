@@ -15,4 +15,4 @@ test_name="Ensure mounting of freevxfs filesystems is disabled (Scored)"
 scored="Yes"
 server="Server1"
 workstation="Workstation1"
-
+important="Yes"

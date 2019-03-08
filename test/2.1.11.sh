@@ -6,3 +6,4 @@
 out=$(chkconfig --list | grep -E "^(xinetd)\s" |grep ":on")
 [[ -z "${out}" ]] || return 1
 
+important="Yes"

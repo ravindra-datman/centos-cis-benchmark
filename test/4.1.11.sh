@@ -27,3 +27,4 @@ test_name="Ensure unsuccessful unauthorized file access attempts are collected (
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

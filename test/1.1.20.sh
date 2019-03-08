@@ -18,4 +18,4 @@ test_name="Ensure noexec option set on removable media partitions (Not Scored)"
 scored="No"
 server="Server1"
 workstation="Workstation1"
-
+important="No"

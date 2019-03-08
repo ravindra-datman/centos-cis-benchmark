@@ -27,8 +27,9 @@ else
         grep "net.ipv4.conf.default.log_martians" /etc/sysctl.conf | grep -E "net.ipv4.conf.default.log_martians = 1" || return $?
 fi
 }
-test_serial_number="3.2.4
+test_serial_number="3.2.4"
 test_name="Ensure suspicious packets are logged (Scored)"
 scored="Yes"
 server="Server1"
 workstation="Workstation1"
+important="Yes"

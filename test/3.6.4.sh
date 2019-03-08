@@ -14,3 +14,4 @@ test_name="Ensure outbound and established connections are configured (Not Score
 scored="No"
 server="Server1"
 workstation="Workstation1"
+important="No"

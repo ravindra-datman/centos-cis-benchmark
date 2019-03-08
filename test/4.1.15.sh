@@ -17,3 +17,4 @@ test_name="Ensure changes to system administration scope (sudoers) is collected 
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

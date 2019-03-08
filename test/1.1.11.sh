@@ -8,9 +8,9 @@
 execute(){
 mount | grep /var/log || return $?
 }
-t_serial_number="1.1.11"
+test_serial_number="1.1.11"
 test_name="Ensure separate partition exists for /var/log (Scored)"
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
-
+important="No"

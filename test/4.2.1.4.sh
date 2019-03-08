@@ -12,3 +12,4 @@ test_name="Ensure rsyslog is configured to send logs to a remote log host (Score
 scored="Yes"
 server="Server1"
 workstation="Workstation1"
+important="Yes"

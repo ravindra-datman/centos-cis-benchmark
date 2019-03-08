@@ -44,3 +44,4 @@ test_name="Ensure users' home directories permissions are 750 or more restrictiv
 scored="Yes"
 server="Server1"
 workstation="Workstation1"
+important="Yes"

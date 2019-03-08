@@ -13,3 +13,4 @@ test_name="Ensure auditing for processes that start prior to auditd is enabled (
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

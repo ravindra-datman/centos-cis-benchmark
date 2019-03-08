@@ -18,3 +18,4 @@ test_name="Ensure remote rsyslog messages are only accepted on designated log ho
 scored="No"
 server="Server1"
 workstation="Workstation1"
+important="No"

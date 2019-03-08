@@ -3,39 +3,29 @@
 test_filter() {
 	#The function below takes two arguments, the first is the user input test specification, and the second is the serial number for the test.  The serial number is then run against one or both of two text files that sees if the serial number is listed as an unscored test or a unimportant scored test.  If the serial number is found, the function returns a 1, indicating that the test should not be run, if a zero is returned, then the test is given the green light to be run. 
 
-	local test = $1
-	shift
-	local scored = $1
-	shift
-	local important = $1
-	if [[ $test == "Scored_Only" || $test == "Important_Scored_Only" ]]; then
-		if [[ $test == "Scored_Only" && $scored == "Yes" ]]; then
-			echo 0
-		fi
-        	if [[ $test == "Important_SCored_Only" && $scored =="Yes" && $important == "Yes" ]]; then
-			echo 0
-		fi
+	if [[ -z "$3" ]]; then
+		echo 0
+		return	
 	fi
+	local test=$1
+#        echo "Test: $test" >&2
+	local scored=$2
+#       echo "scored: $scored" >&2
+	local important=$3
+#        echo "important: $important" >&2
+	if [[ "$test" == "Scored_Only" && "$scored" == "Yes" ]]; then
+#                echo "CORRECT!!!" >&2
+		echo 0
+		return
+	fi
+        if [[ "$test" == "Important_Scored_Only" && "$important" == "Yes" ]]; then
+ #               echo "INCORRECT!!!" >&2
+		echo 0
+		return
+	fi
+ #       echo "NO MATCH!!!!!" >&2
 	echo 1
-#		while read -r line; do
-#			if [[ $2 == $line ]]; then
-#				echo 1
-#			fi
-#		done < "unscored_tests.txt"
-#		if [[ $1 == "Scored_Only" ]]; then
-#			echo 0
-#		fi
-#		if [[ $1 == "Important_Scored_Only" ]]; then	
-#			while read -r line; do
-#				if [[ $2 == $line ]]; then
-#					echo 1
-#				fi
-#			done < "unimportant_scored_tests.txt"
-#			echo 0
-#		fi       
-#	else
-#		echo 0
-#	fi
+	return
 }
 
 test_wrapper() {
@@ -147,23 +137,14 @@ fi
       continue
     fi
 
-#    echo Including test file $i
     source ./$i
 
-    if [[ $(test_filter $test $scored $important)==0 ]]; then
+  #  echo TEST FILTER RESULT : $(test_filter $test $scored $important)
+    if [[ $(test_filter $test $scored $important) == 0 ]]; then
+  #      echo GOING IN!!!!!!!!!!!!!!!!!!!!!!!!
 	test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
     fi
-    
-    # This will be the return value of the "included" function
-#    testcode=$?
-
- #   echo -n "${test_name} (Important: ${test_important}, Scored: ${test_scored}): "
- #   if [[ $testcode == 1 ]]; then
- #     echo FAIL
- #   else
- #     echo PASS
- #   fi
-  done
+    done
 
 echo
 echo Results

@@ -12,3 +12,4 @@ test_name="Ensure the MCS Translation Service (mcstrans) is not installed (Score
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

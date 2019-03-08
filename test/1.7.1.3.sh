@@ -13,3 +13,4 @@ test_name="Ensure remote login warning banner is configured properly (Not Scored
 scored="No"
 server="Server1"
 workstation="Workstation1"
+important="No"

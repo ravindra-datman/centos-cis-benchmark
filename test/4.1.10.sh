@@ -35,3 +35,4 @@ test_name="Ensure discretionary access control permission modification events ar
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

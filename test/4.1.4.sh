@@ -24,3 +24,4 @@ test_name="Ensure events that modify date and time information are collected (Sc
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

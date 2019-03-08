@@ -13,3 +13,4 @@ test_name="Ensure syslog-ng is configured to send logs to a remote log host (Not
 scored="No"
 server="Server1"
 workstation="Workstation1"
+important="No"

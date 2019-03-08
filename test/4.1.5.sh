@@ -23,3 +23,4 @@ test_name="Ensure events that modify user/group information are collected (Score
 scored="Yes"
 server="Server2"
 workstation="Workstation2"
+important="Yes"

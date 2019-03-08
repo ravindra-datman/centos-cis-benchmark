@@ -14,3 +14,4 @@ test_name="Ensure remote syslog-ng messages are only accepted on designated log 
 scored="No"
 server="Server1"
 workstation="Workstation1"
+important="No"

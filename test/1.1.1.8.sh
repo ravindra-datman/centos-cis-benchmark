@@ -14,3 +14,4 @@ scored="Yes"
 server="Server2"
 workstation="Workstation2"
 
+important="Yes"
