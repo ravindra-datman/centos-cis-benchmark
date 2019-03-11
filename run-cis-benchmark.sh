@@ -68,8 +68,6 @@ test_wrapper() {
 	fi
 
 	if [[ -f ./test/${ref}.sh ]]; then
-#	if [[ -f execute ]]; then
-#		bash ./test/${ref}.sh ${args} > /dev/null 2>/dev/null
                 execute ${args} > /dev/null 2>/dev/null
 		if [[ "$?" -eq 0 ]]; then
 			echo -e "${GREEN}PASS${NC} - $ref - ${msg}"
