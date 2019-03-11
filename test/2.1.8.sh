@@ -4,5 +4,6 @@
 # 2.1.8 - Ensure telnet server is not enabled (Scored)
 
 out=$(chkconfig --list | grep -E "^(telnet)\s" |grep ":on")
-[[ -z "${out}" ]] || exit 1
+[[ -z "${out}" ]] || return 1
 
+important="Yes"
