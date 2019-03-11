@@ -8,22 +8,16 @@ test_filter() {
 		return	
 	fi
 	local test=$1
-#        echo "Test: $test" >&2
 	local scored=$2
-#       echo "scored: $scored" >&2
 	local important=$3
-#        echo "important: $important" >&2
 	if [[ "$test" == "Scored_Only" && "$scored" == "Yes" ]]; then
-#                echo "CORRECT!!!" >&2
 		echo 0
 		return
 	fi
         if [[ "$test" == "Important_Scored_Only" && "$important" == "Yes" ]]; then
- #               echo "INCORRECT!!!" >&2
 		echo 0
 		return
 	fi
- #       echo "NO MATCH!!!!!" >&2
 	echo 1
 	return
 }
@@ -139,9 +133,7 @@ fi
 
     source ./$i
 
-  #  echo TEST FILTER RESULT : $(test_filter $test $scored $important)
     if [[ $(test_filter $test $scored $important) == 0 ]]; then
-  #      echo GOING IN!!!!!!!!!!!!!!!!!!!!!!!!
 	test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
     fi
     done
