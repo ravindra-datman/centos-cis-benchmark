@@ -53,10 +53,14 @@ while [ "$1" != "" ]; do
          return 1
       fi
    else
-      if [[ $debug -ne '' ]] ; then
-         echo $1 is not a directory
+      if [[ ! $HOME =~ ^${1} ]]; then
+	    echo $1 is not a directory and not inside of $HOME
+      else
+        if [[ $debug -ne '' ]] ; then
+           echo $1 is not a directory
+        fi
+        return 1
       fi
-      return 1
    fi	
    shift
 done
