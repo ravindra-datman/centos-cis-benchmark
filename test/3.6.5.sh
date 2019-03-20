@@ -6,7 +6,7 @@
 
 execute(){
 # tcp
-for port in $(netstat -lnt |grep ^tcp | grep LISTEN | awk {'print $4'} | cut -d":" -f2); do
+for port in $(netstat -lnt |grep ^tcp | grep LISTEN | awk {'print $4'} |grep -v ^127\.| cut -d":" -f2); do
         echo open tcp port $port
 
         iptables -L INPUT -v -n | grep "ACCEPT\s*tcp.*:$port" || return $?
