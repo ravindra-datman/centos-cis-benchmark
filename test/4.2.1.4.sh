@@ -5,7 +5,7 @@
 # 4.2.1.4 "Ensure rsyslog is configured to send logs to a remote log host (Scored)" Yes Server1 Workstation1
 
 execute(){
-egrep "((^[^#]\*\.\* *@)|(^action\([^\)]*omfwd[^\)]*target=.*))" /etc/rsyslog.conf /etc/rsyslog.d/*.conf
+egrep "((^[^#]\*\.\* *@)|(^action\([^\)]*omfwd[^\)]*target=.*))" /etc/rsyslog.conf /etc/rsyslog.d/*.conf  2>/dev/null || return 1
 }
 test_serial_number="4.2.1.4"
 test_name="Ensure rsyslog is configured to send logs to a remote log host (Scored)"
