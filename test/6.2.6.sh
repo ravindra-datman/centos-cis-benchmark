@@ -54,11 +54,7 @@ while [ "$1" != "" ]; do
       fi
    else
       if [[ ! $1 =~ ^${HOME} ]]; then
-	    echo $1 is not a directory and not inside of $HOME
-      else
-        if [[ $debug -ne '' ]] ; then
-           echo $1 is not a directory
-        fi
+        echo $1 is not a directory and not inside of $HOME
         return 1
       fi
    fi	
