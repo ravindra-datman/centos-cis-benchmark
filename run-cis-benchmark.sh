@@ -123,8 +123,13 @@ if [[ $test != "Scored_Only" && $test != "Important_Scored_Only" && $test != "" 
 	exit 1
 fi
 
+test_files="ls test/*.sh"
 
-  for i in test/*.sh; do
+IFS=$'\n'
+test_files=($(sort <<<"${test_files[*]}"))
+unset IFS
+
+  for i in $test_files; do
     if [[ `basename $i` == `basename $0` ]]; then
       continue
     fi
