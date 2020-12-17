@@ -123,11 +123,7 @@ if [[ $test != "Scored_Only" && $test != "Important_Scored_Only" && $test != "" 
 	exit 1
 fi
 
-test_files="ls test/*.sh"
-
-IFS=$'\n'
-test_files=($(sort <<<"${test_files[*]}"))
-unset IFS
+test_files=`ls test/*.sh | sort`
 
   for i in $test_files; do
     if [[ `basename $i` == `basename $0` ]]; then
@@ -137,6 +133,7 @@ unset IFS
     source ./$i
 
     if [[ $(test_filter $test $scored $important) == 0 ]]; then
+	echo "$i"
 	test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
     fi
     done
