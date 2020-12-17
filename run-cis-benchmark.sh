@@ -133,8 +133,7 @@ test_files=`ls test/*.sh | sort`
     source ./$i
 
     if [[ $(test_filter $test $scored $important) == 0 ]]; then
-	echo "$i"
-	test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
+		test_wrapper "$test_serial_number" "$test_name" "$scored" "$server" "$workstation"
     fi
     done
 
